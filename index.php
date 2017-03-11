@@ -14,7 +14,7 @@
 <?php
  echo "hello world";
 ?>
-<div>Привет</div>
-<p>test</p>
+<div>Hello</div>
+<p>site_2</p>
 </body>
 </html>
