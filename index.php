@@ -15,5 +15,6 @@
  echo "hello world";
 ?>
 <div>Привет</div>
+<p>master_site</p>
 </body>
 </html>
