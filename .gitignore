@@ -1,0 +1,4 @@
+#folder ignore
+.idea/
+testclone/
+.git/
