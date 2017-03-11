@@ -15,6 +15,10 @@
  echo "hello world";
 ?>
 <div>Hello</div>
+<<<<<<< HEAD
 <p>site_2</p>
+=======
+<p>master_site</p>
+>>>>>>> master
 </body>
 </html>
