@@ -1,0 +1,9 @@
+<?php
+
+return [
+    'HOST' => '127.0.0.1',
+    'DATABASE' => 'app',
+    'USER' => 'root',
+    'PASSWORD' => '',
+    'CHARSET' => 'utf8',
+];
