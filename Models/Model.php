@@ -74,10 +74,10 @@ class Model
         $stmt->execute(array($id));
         return $stmt->fetch();
     }
-    public function addId($id)
+   /* public function addId($id)
     {
         $stmt = $this->mysql->prepare('INSERT INTO id VALUES($id)');
         $stmt->execute(array($id));
         return $stmt->fetch();
-    }
+    }*/
 }
