@@ -25,7 +25,7 @@ class Model
     {
         $this->config = [
             'HOST' => '127.0.0.1',
-            'DATABASE' => 'app',
+            'DATABASE' => 'test_site',
             'USER' => 'root',
             'PASSWORD' => '',
             'CHARSET' => 'utf8',
@@ -64,6 +64,13 @@ class Model
     public function getById($id)
     {
         $stmt = $this->mysql->prepare('SELECT * FROM '. $this->table .' WHERE `id`=?');
+        $stmt->execute(array($id));
+        return $stmt->fetch();
+    }
+
+    public function getUpdate($id)
+    {
+        $stmt = $this->mysql->prepare('UPDATE id SET'. $this->table .' WHERE `id`=?');
         $stmt->execute(array($id));
         return $stmt->fetch();
     }

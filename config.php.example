@@ -2,7 +2,7 @@
 
 return [
     'HOST' => '127.0.0.1',
-    'DATABASE' => 'app',
+    'DATABASE' => 'test_site',
     'USER' => 'root',
     'PASSWORD' => '',
     'CHARSET' => 'utf8',
