@@ -16,6 +16,8 @@ class Model
     // Используемая таблица
     protected $table;
 
+    protected $attributes;
+
     /**
      * Загружает конфиг
      *
@@ -67,4 +69,69 @@ class Model
         $stmt->execute(array($id));
         return $stmt->fetch();
     }
+
+    /**
+     * Обновляет данные записи
+     *
+     * Принимает массив
+     * Первый элемент должен быть id записи в БД
+     *
+     * @param $data
+     * @throws \Exception
+     */
+    public function update($data)
+    {
+        if (! is_array($data)) throw new \Exception('Агрумент должен быть массивом');
+
+        /*
+         * Вырезаем id чтобы по нему обновлять запись
+         * И отрезаем его, чтобы он не попал в UPDATE SET
+         */
+        $id = array_shift($data);
+        $pdoSet = $this->pdoSet($data);
+
+        var_dump($pdoSet, $data);die();
+
+        $sql = 'UPDATE '. $this->table . ' SET '. $pdoSet .' WHERE id='. $id;
+        $stmt = $this->mysql->prepare($sql);
+        $stmt->execute($data);
+    }
+
+    /**
+     * Формирует шаблон для SQL
+     *
+     * В виде: column1=:column1, column2=:column2
+     *
+     * @param $data
+     * @return string
+     * @throws \Exception
+     */
+    private function pdoSet($data)
+    {
+        if (! is_array($data)) throw new \Exception('Агрумент должен быть массивом');
+
+        $dataInRow = '';
+        foreach ($data as $key => $value) {
+            $dataInRow .= $key . '=:' . $key . ', ';
+        }
+        // Отрезаем последние 2 символа ', '
+
+        $dataInRow = substr($dataInRow, 0 , strlen($dataInRow) - 2);
+        return $dataInRow;
+    }
+
+
+
+/*    public function getUpdate($id)
+    {
+        $stmt = $this->mysql->prepare('UPDATE id SET'. $this->table .' WHERE `id`=?');
+        $stmt->execute(array($id));
+        return $stmt->fetch();
+    }*/
+   /* public function addId($id)
+    {
+        $stmt = $this->mysql->prepare('INSERT INTO id VALUES($id)');
+        $stmt->execute(array($id));
+        return $stmt->fetch();
+    }*/
 }
