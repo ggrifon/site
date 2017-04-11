@@ -19,18 +19,6 @@ $userData['name'] = 'Igor';
 $user->update($userData);
 
 
-
 var_dump($user);
-
-
-
-
-
-
-
-
-
-
-
 
 

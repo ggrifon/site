@@ -27,7 +27,7 @@ class Model
     {
         $this->config = [
             'HOST' => '127.0.0.1',
-            'DATABASE' => 'app',
+            'DATABASE' => 'test_site',
             'USER' => 'root',
             'PASSWORD' => '',
             'CHARSET' => 'utf8',
@@ -97,6 +97,14 @@ class Model
         $stmt->execute($data);
     }
 
+    public function insert($data)
+    {
+        $id = array_shift($data);
+        $pdoSet = $this->pdoSet($data);
+        $sql = "INSERT INTO users SET ".$pdoSet;
+        $stm = $this->mysql->prepare($sql);
+        $stm->execute($data);
+    }
     /**
      * Формирует шаблон для SQL
      *
@@ -106,6 +114,7 @@ class Model
      * @return string
      * @throws \Exception
      */
+
     private function pdoSet($data)
     {
         if (! is_array($data)) throw new \Exception('Агрумент должен быть массивом');
@@ -119,6 +128,8 @@ class Model
         $dataInRow = substr($dataInRow, 0 , strlen($dataInRow) - 2);
         return $dataInRow;
     }
+
+
 
 
 
