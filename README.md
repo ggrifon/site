@@ -6,6 +6,8 @@
 * [Фарит Хасанов](https://github.com/ganjo888/Php-lessons)
 * [Владислав Шагин](https://github.com/ggrifon/site)
 * [Владислав Созутов](https://github.com/valdo777/work.git)
+* [Артур Зарипов](https://github.com/Arthur-88/My_php_projects)
+
 
 ## Актуальное домашнее задание [28.03] 
 * В классе Model добавить 2 метода
