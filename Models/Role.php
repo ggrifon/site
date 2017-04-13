@@ -2,7 +2,7 @@
 
 namespace Models;
 
-class Role extends Model
+class Role extends \Model
 {
     protected $table = 'roles';
 }

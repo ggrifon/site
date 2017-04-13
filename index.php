@@ -1,36 +1,39 @@
 <?php
-use Models\User;
-use Models\Model; // Подключил Класс Model для создания обьекта $test
-
-echo '<pre>';
-
 
 spl_autoload_register();
-/*
- * Проверка работы SQL запроса.
- * Формирую массив данных для проверки
- */
 
-$nedata = array(
-    'name' => 'Orange',
-    'roles' => '5',
-);
-$test = new User();
-$test->insert($nedata);
+$output = require './router.php';
 
-//require './router.php';
+echo $output;
 
-/*
-$user = new User();
+/*echo '<pre>';
 
+$user = ['id' => 12312, 123123 => 123123];
+$a = 'переменная а';
+$b = 'переменная b';
 
-$id = 2;
-$userData = $user->getById($id);
+$data = compact('user', 'b');
 
-$userData['name'] = 'Igor';
+test($data);
 
-$user->update($userData);
+function test($data)
+{
+    extract($data);
+
+    var_dump($user, $b);
+}*/
 
 
-var_dump($user);
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+

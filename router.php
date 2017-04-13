@@ -9,7 +9,7 @@ $route = searchRoute($routes, $url);
 $data = parseRoute($route);
 
 
-echo call($data['class'], $data['method'], $data['params']);
+return call($data['class'], $data['method'], $data['params']);
 
 /**
  * Ищет ссылку в массиве
