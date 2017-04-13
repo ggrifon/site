@@ -10,13 +10,13 @@ spl_autoload_register();
  * Проверка работы SQL запроса.
  * Формирую массив данных для проверки
  */
-$test = new Model();
-$data = array(
-    'id' => '3',
+
+$nedata = array(
     'name' => 'Orange',
     'roles' => '5',
-    );
-$test->insert($data);
+);
+$test = new User();
+$test->insert($nedata);
 
 //require './router.php';
 

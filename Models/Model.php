@@ -27,7 +27,7 @@ class Model
     {
         $this->config = [
             'HOST' => '127.0.0.1',
-            'DATABASE' => 'test_site',
+            'DATABASE' => 'app',
             'USER' => 'root',
             'PASSWORD' => '',
             'CHARSET' => 'utf8',
@@ -100,8 +100,8 @@ class Model
     public function insert($data)
     {
         //$id = array_shift($data);
-        $pdoSet = $this->pdoSet($data);
-        $sql = 'INSERT INTO users VALUES '.$pdoSet;
+        $pdoSet = $this->pdoValues($data);
+        $sql = 'INSERT INTO users (name, role_id) VALUES '.$pdoSet;
         $stm = $this->mysql->prepare($sql);
         $stm->execute($data);
     }
@@ -114,22 +114,35 @@ class Model
      * @return string
      * @throws \Exception
      */
-
     private function pdoSet($data)
     {
-        var_dump($data);
         if (! is_array($data)) throw new \Exception('Агрумент должен быть массивом');
 
         $dataInRow = '';
         foreach ($data as $key => $value) {
-            $dataInRow .= $key . '=:' . $value . ', ';
+            $dataInRow .= $key . '=:' . $key . ', ';
         }
         // Отрезаем последние 2 символа ', '
 
         $dataInRow = substr($dataInRow, 0 , strlen($dataInRow) - 2);
-        var_dump($dataInRow);
         return $dataInRow;
     }
+
+    private function pdoValues($data)
+    {
+        if (! is_array($data)) throw new \Exception('Агрумент должен быть массивом');
+
+        $dataInRow = '(';
+        foreach ($data as $key => $value) {
+            $dataInRow .= ':'. $key . ', ';
+        }
+        // Отрезаем последние 2 символа ', '
+        $dataInRow = substr($dataInRow, 0 , strlen($dataInRow) - 2);
+        $dataInRow .= ')';
+        return $dataInRow;
+    }
+
+
 
 
 
