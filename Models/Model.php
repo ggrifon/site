@@ -27,7 +27,7 @@ class Model
     {
         $this->config = [
             'HOST' => '127.0.0.1',
-            'DATABASE' => 'app',
+            'DATABASE' => 'test_site',
             'USER' => 'root',
             'PASSWORD' => '',
             'CHARSET' => 'utf8',
@@ -117,7 +117,6 @@ class Model
     private function pdoSet($data)
     {
         if (! is_array($data)) throw new \Exception('Агрумент должен быть массивом');
-
         $dataInRow = '';
         foreach ($data as $key => $value) {
             $dataInRow .= $key . '=:' . $key . ', ';
@@ -131,7 +130,6 @@ class Model
     private function pdoValues($data)
     {
         if (! is_array($data)) throw new \Exception('Агрумент должен быть массивом');
-
         $dataInRow = '(';
         foreach ($data as $key => $value) {
             $dataInRow .= ':'. $key . ', ';
