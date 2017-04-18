@@ -15,6 +15,7 @@ class HomeController
 {
     public function index()
     {
-        return \View::render('home');
+        $user = User::getById(1);
+        return \View::render($user);
     }
 }

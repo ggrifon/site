@@ -6,15 +6,16 @@ class View
      * Подргужает представление и заменяет ключи значениями
      *
      * @param array $data
-     * @param string $template
      * @return mixed|string
      */
-    public static function render($template = 'errors/404.php', $data = null)
+    public static function render(array $data)
     {
-        if ($data && is_array($data)) extract($data);
         ob_start();
-            require './Views/'. $template . '.php';
+        require './Views/home.php';
         $html = ob_get_clean();
+        foreach ($data as $key => $value) {
+            $html = str_replace('{{' . $key .'}}', $value, $html);
+        }
         return $html;
     }
 }

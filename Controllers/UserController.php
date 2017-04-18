@@ -16,7 +16,8 @@ class UserController
     public function getById($id)
     {
         $user = (new User())->getById($id);
-        return \View::render('users/show', compact('user'));
+        $role = (new Role())->getById($id);
+        return 'Пользователь c ID '. $user['name'] . ' ' . $role['title'];
     }
 
 }
